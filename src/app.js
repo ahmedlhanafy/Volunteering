@@ -34,7 +34,8 @@ export default class App extends Component {
         <Navigator
         style={{ flex:1 }}
             initialRoute={{ name: 'ChooseGenresPage' }}
-            renderScene={this._navigatorRenderScene}/>
+            renderScene={this._navigatorRenderScene}
+            configureScene={_ => Platform.OS === 'android'? Navigator.SceneConfigs.FloatFromBottomAndroid:Navigator.SceneConfigs.PushFromRight}/>
       );
   }
   _navigatorRenderScene(route, navigator) {
@@ -52,7 +53,7 @@ export default class App extends Component {
       case 'HomePage':
         return (<HomePage navigator={navigator} title="Details" />);
       case 'DetailsPage':
-        return (<DetailsPage navigator={navigator} title="Details" />);
+        return (<DetailsPage {...route.passProps} navigator={navigator} title="Details" />);
     }
   }
 }

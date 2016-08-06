@@ -5,7 +5,8 @@ import {
   Text,
   Image,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -16,8 +17,8 @@ let {
 
 
 const Card = ({ goDetails, mainImg, ngoTitle, ngoIcon, createdAt, likes, comments, goingCount, liked, commented, going }) => (
-  <TouchableOpacity onPress={goDetails}>
-  <View style={styles.card}>
+  <TouchableHighlight style={styles.card} onPress={() => goDetails()} underlayColor="rgba(255,255,255,0.8)">
+  <View>
     <View style={{ flexDirection: 'row' ,  padding: 8, alignItems: 'center', justifyContent: 'space-between'}}>
       <View style={{ flexDirection: 'row', alignItems: 'center'}}>
         <Image source={ngoIcon} style={styles.ngoLogo}/>
@@ -42,13 +43,16 @@ const Card = ({ goDetails, mainImg, ngoTitle, ngoIcon, createdAt, likes, comment
         </View>
       </View>
     </View>
+  
   </View>
-</TouchableOpacity>
+  </TouchableHighlight>
 );
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',margin: 8, elevation: 2,
+  card: {    
+    backgroundColor: '#fff',
+    marginVertical: 8, 
+    elevation: 2,
     borderRadius: 2.5,
     shadowOpacity: .2,
     shadowColor: '#000000',

@@ -10,7 +10,8 @@ import {
   ScrollView,
   StatusBar,
   TouchableOpacity,
-  Platform
+  Platform,
+  ListView
 } from 'react-native';
 
 import FakeData from '../../fakeDocs';
@@ -20,21 +21,28 @@ import Navbar from './Navbar';
 export default class ChooseGenresPage extends Component {
   constructor(){
     super();
-    if(Platform.OS === 'ios')
+    if(Platform.OS === 'ios'){
       StatusBar.setBarStyle('light-content', true);
       StatusBar.setHidden(false);
+    }
+     let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.state = {
+      dataSource: ds.cloneWithRows(FakeData.chooseGenresPage.data)
+    }
+      
   }
-
 
   render () {
     return (
       <View style={styles.container}>
         <Navbar title="Choose Genres" buttonAction={() => this.props.navigator.push({ name: 'HomePage'})} buttonColor='rgba(203, 174, 50, 0.93)'/>
-        <ScrollView  style={{ paddingTop: Platform.OS === 'ios'? 64:0 }}>
-          <View>
-            {FakeData.chooseGenresPage.data.map((data) => <Card {...data}/>)}
-          </View>
-        </ScrollView>
+         <ListView
+         initialListSize={7}
+         removeClippedSubviews={false}
+          style={{ paddingTop: Platform.OS === 'ios'? 64:0 }}
+          dataSource={this.state.dataSource}
+          renderRow={rowData => <Card {...rowData}/>}
+        />
       </View>
     );
   }
