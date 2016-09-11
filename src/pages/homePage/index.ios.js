@@ -11,11 +11,10 @@ import {
   TabBarIOS,
   Text,
   ScrollView,
-  Image,
   Dimensions
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icon , {
+import {
   TabBarItem
 } from 'react-native-vector-icons/Ionicons';
 
@@ -28,12 +27,12 @@ let {
 } = Dimensions.get('window');
 
 export default class HomePage extends Component {
-  constructor(){
+  constructor() {
     super();
-    if(Platform.OS === 'ios')
-    StatusBar.setBarStyle('light-content', true);
+    if (Platform.OS === 'ios')
+      StatusBar.setBarStyle('light-content', true);
   }
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Navbar title="Feed"/>
@@ -48,10 +47,10 @@ export default class HomePage extends Component {
             title=""
             selectedIconName="ios-home"
             >
-            <View style={{ flex: 1,backgroundColor: '#2e2e2e'}}>
-              <ScrollView style={{ paddingTop: 64-16 }}>
+            <View style={{ flex: 1, backgroundColor: '#2e2e2e' }}>
+              <ScrollView style={{ paddingTop: 64 - 16 }}>
                 <View>
-                  {FakeData.feedPage.data.map(data => <Card {...data} goDetails={() => this.props.navigator.push({name: 'DetailsPage'})}/>)}
+                  {FakeData.feedPage.data.map(data => <Card {...data} goDetails={() => this.props.navigator.push({ name: 'DetailsPage' }) }/>) }
                 </View>
               </ScrollView>
             </View>
@@ -65,7 +64,7 @@ export default class HomePage extends Component {
               <LinearGradient colors={['#011C27', '#000c11']} style={styles.container}>
                 <LinearGradient
                   colors={['#011C27', '#003a53']} style={styles.gradient}>
-                  <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold', backgroundColor: 'transparent'}}>Feed</Text>
+                  <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold', backgroundColor: 'transparent' }}>Feed</Text>
                 </LinearGradient>
 
               </LinearGradient>

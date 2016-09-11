@@ -24,31 +24,31 @@ let {
 } = Dimensions.get('window');
 
 export default class HomePage extends Component {
-  constructor(){
+  constructor() {
     super();
-    if(Platform.OS === 'ios')
-    StatusBar.setBarStyle('light-content', true);
+    if (Platform.OS === 'ios')
+      StatusBar.setBarStyle('light-content', true);
 
-   let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    let ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     this.state = {
       dataSource: ds.cloneWithRows(FakeData.feedPage.data),
       activeTab: 0,
     }
   }
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <Navbar 
-        tabs={['md-paper', 'md-pulse', 'md-calendar', 'md-contact']} 
-        activeTab={this.state.activeTab} 
-        changeTab={index => this.setState({ activeTab: index})}
-        />      
-        <ListView 
-        pageSize={6}
-        initialListSize={7}
-        dataSource={this.state.dataSource} 
-        renderRow={rowData => <Card {...rowData}  goDetails={() => this.props.navigator.push({name: 'DetailsPage', passProps: {img: rowData.mainImg, gradientColor: rowData.gradientColor}})}/>} 
-        />         
+        <Navbar
+          tabs={['md-paper', 'md-pulse', 'md-calendar', 'md-contact']}
+          activeTab={this.state.activeTab}
+          changeTab={index => this.setState({ activeTab: index }) }
+          />
+        <ListView
+          pageSize={6}
+          initialListSize={7}
+          dataSource={this.state.dataSource}
+          renderRow={rowData => <Card {...rowData}  goDetails={() => this.props.navigator.push({ name: 'DetailsPage', passProps: { img: rowData.mainImg, gradientColor: rowData.gradientColor } }) }/>}
+          />
       </View>
 
     );

@@ -29,7 +29,7 @@ export default class ChooseGenresPage extends Component {
     this.state = {
       dataSource: ds.cloneWithRows(FakeData.chooseGenresPage.data)
     }
-      
+
   }
 
   render () {

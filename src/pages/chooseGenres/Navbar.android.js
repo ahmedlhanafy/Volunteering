@@ -23,7 +23,7 @@ const Navbar = ({ title, buttonAction, buttonColor }) => (
 
 const styles = StyleSheet.create({
     statusBar: {
-    backgroundColor: 'rgb(24, 24, 24)',
+    backgroundColor: '#212121',
   },
   navBar: {
     elevation: 3,

@@ -29,7 +29,7 @@ const FakeData = {
       },
       {
         mainImg: require('./imgs/img3.jpg'),
-        gradientColor: 'rgba(49, 108, 212, 1)rgba(215, 166, 55, 1)',
+        gradientColor: 'rgba(49, 108, 212, 1)',
         ngoTitle: 'AIESEC',
         ngoIcon: require('./imgs/img1.jpg'),
         createdAt: '4hours ago',
@@ -81,7 +81,7 @@ const FakeData = {
       },
       {
         mainImg: require('./imgs/img7.jpg'),
-        gradientColor: 'rgba(132, 215, 38, 1)',        
+        gradientColor: 'rgba(132, 215, 38, 1)',
         ngoTitle: 'AIESEC',
         ngoIcon: require('./imgs/img1.jpg'),
         createdAt: 'yesterday',

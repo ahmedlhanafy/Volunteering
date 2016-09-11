@@ -5,7 +5,7 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
-import  {
+import {
   BlurView
 } from 'react-native-blur';
 
@@ -13,7 +13,7 @@ import  {
 const Navbar = ({ title, buttonAction, buttonColor }) => (
   <BlurView blurType="dark" style={[styles.navBar]}>
     <View style={{ marginTop: 20, flex: 1, justifyContent: 'space-between', alignItems: 'center', padding: 8, flexDirection: 'row' }}>
-      <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold'}}>{title}</Text>
+      <Text style={{ color: 'white', fontSize: 22, fontWeight: 'bold' }}>{title}</Text>
     </View>
   </BlurView>
 );

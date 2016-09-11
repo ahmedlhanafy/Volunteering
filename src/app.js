@@ -1,3 +1,5 @@
+// <reference path="./.vscode/typings/react/react.d.ts" />
+// <reference path="./.vscode/typings/react-native/react-native.d.ts" />
 /**
  * @flow
  */
@@ -17,9 +19,9 @@ import HomePage from './pages/homePage';
 import DetailsPage from './pages/detailsPage';
 
 export default class App extends Component {
-  constructor(){
+  constructor() {
     super();
-    if(Platform.OS === 'ios'){
+    if (Platform.OS === 'ios') {
       StatusBar.setBarStyle('light-content', true);
       StatusBar.setHidden(false);
 
@@ -27,25 +29,23 @@ export default class App extends Component {
 
 
   }
-  render () {
-    // configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottomAndroid}
-
-      return (
-        <Navigator
-        style={{ flex:1 }}
-            initialRoute={{ name: 'ChooseGenresPage' }}
-            renderScene={this._navigatorRenderScene}
-            configureScene={_ => Platform.OS === 'android'? Navigator.SceneConfigs.FloatFromBottomAndroid:Navigator.SceneConfigs.PushFromRight}/>
-      );
+  render() {
+    return (
+      <Navigator
+        style={{ flex: 1 }}
+        initialRoute={{ name: 'ChooseGenresPage' }}
+        renderScene={this._navigatorRenderScene}
+        configureScene={_ => Platform.OS === 'android' ? Navigator.SceneConfigs.FloatFromBottomAndroid : Navigator.SceneConfigs.PushFromRight}/>
+    );
   }
   _navigatorRenderScene(route, navigator) {
-    _navigator = navigator;
+    let _navigator = navigator;
     BackAndroid.addEventListener('hardwareBackPress', () => {
-    if (_navigator.getCurrentRoutes().length === 1  ) {
-       return false;
-    }
-    _navigator.pop();
-    return true;
+      if (_navigator.getCurrentRoutes().length === 1) {
+        return false;
+      }
+      _navigator.pop();
+      return true;
     });
     switch (route.name) {
       case 'ChooseGenresPage':
